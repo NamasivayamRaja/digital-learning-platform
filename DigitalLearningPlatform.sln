@@ -1,0 +1,128 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36015.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.BuildingBlocks.Common", "src\BuildingBlocks\DigitalLearningPlatform.BuildingBlocks.Common\DigitalLearningPlatform.BuildingBlocks.Common.csproj", "{3C9E84C8-5930-4F28-BF39-DD9BEF385FD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.BuildingBlocks.EventBus", "src\BuildingBlocks\DigitalLearningPlatform.BuildingBlocks.EventBus\DigitalLearningPlatform.BuildingBlocks.EventBus.csproj", "{2EC17584-7F1D-480A-9430-387E7DA55960}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.BuildingBlocks.MessageContracts", "src\BuildingBlocks\DigitalLearningPlatform.BuildingBlocks.MessageContracts\DigitalLearningPlatform.BuildingBlocks.MessageContracts.csproj", "{A70471DE-ACD1-41D1-906D-8D1D5AF3F3C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.ApiGateway", "src\Gateway\DigitalLearningPlatform.ApiGateway\DigitalLearningPlatform.ApiGateway.csproj", "{C61E3540-7B2A-402A-B060-8877278285CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.UserService", "src\Services\DigitalLearningPlatform.Services.UserService\DigitalLearningPlatform.Services.UserService.csproj", "{02284F6C-281E-44ED-B418-6B5D2751306D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.ContentService", "src\Services\DigitalLearningPlatform.Services.ContentService\DigitalLearningPlatform.Services.ContentService.csproj", "{0DBED47B-F1BB-4513-83CD-7D1CF63054B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AssessmentService", "src\Services\DigitalLearningPlatform.Services.AssessmentService\DigitalLearningPlatform.Services.AssessmentService.csproj", "{47B06763-B4AD-4650-B781-37FA3ED8E7E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LeaderBoardService", "src\Services\DigitalLearningPlatform.Services.LeaderboardService\DigitalLearningPlatform.Services.LeaderBoardService.csproj", "{C21EAC2F-4A1C-47BB-9043-37EF09E13DD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AiTutorService", "src\Services\DigitalLearningPlatform.Services.AiTutorService\DigitalLearningPlatform.Services.AiTutorService.csproj", "{8E0985FF-E29D-4BF6-AA85-37BE768BFE26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LearningPathService", "src\Services\DigitalLearningPlatform.Services.LearningPathService\DigitalLearningPlatform.Services.LearningPathService.csproj", "{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.UserService.Tests", "tests\Services\DigitalLearningPlatform.Services.UserService.Tests\DigitalLearningPlatform.Services.UserService.Tests.csproj", "{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.ContentService.Tests", "tests\Services\DigitalLearningPlatform.Services.ContentService.Tests\DigitalLearningPlatform.Services.ContentService.Tests.csproj", "{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AssessmentService.Tests", "tests\Services\DigitalLearningPlatform.Services.AssessmentService.Tests\DigitalLearningPlatform.Services.AssessmentService.Tests.csproj", "{8AB35784-6F5E-48BC-A351-9968B28700D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LeaderBoardService.Tests", "tests\Services\DigitalLearningPlatform.Services.LeaderboardService.Tests\DigitalLearningPlatform.Services.LeaderBoardService.Tests.csproj", "{3F400897-EB17-4370-9927-77764CCAB41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AiTutorService.Tests", "tests\Services\DigitalLearningPlatform.Services.AiTutorService.Tests\DigitalLearningPlatform.Services.AiTutorService.Tests.csproj", "{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LearningPathService.Tests", "tests\Services\DigitalLearningPlatform.Services.LearningPathService.Tests\DigitalLearningPlatform.Services.LearningPathService.Tests.csproj", "{06199039-47F4-43C6-934B-0B857437EEC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C9E84C8-5930-4F28-BF39-DD9BEF385FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9E84C8-5930-4F28-BF39-DD9BEF385FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9E84C8-5930-4F28-BF39-DD9BEF385FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9E84C8-5930-4F28-BF39-DD9BEF385FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EC17584-7F1D-480A-9430-387E7DA55960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EC17584-7F1D-480A-9430-387E7DA55960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EC17584-7F1D-480A-9430-387E7DA55960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EC17584-7F1D-480A-9430-387E7DA55960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A70471DE-ACD1-41D1-906D-8D1D5AF3F3C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A70471DE-ACD1-41D1-906D-8D1D5AF3F3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A70471DE-ACD1-41D1-906D-8D1D5AF3F3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A70471DE-ACD1-41D1-906D-8D1D5AF3F3C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C61E3540-7B2A-402A-B060-8877278285CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C61E3540-7B2A-402A-B060-8877278285CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C61E3540-7B2A-402A-B060-8877278285CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C61E3540-7B2A-402A-B060-8877278285CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02284F6C-281E-44ED-B418-6B5D2751306D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02284F6C-281E-44ED-B418-6B5D2751306D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02284F6C-281E-44ED-B418-6B5D2751306D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02284F6C-281E-44ED-B418-6B5D2751306D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DBED47B-F1BB-4513-83CD-7D1CF63054B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DBED47B-F1BB-4513-83CD-7D1CF63054B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DBED47B-F1BB-4513-83CD-7D1CF63054B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DBED47B-F1BB-4513-83CD-7D1CF63054B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B06763-B4AD-4650-B781-37FA3ED8E7E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B06763-B4AD-4650-B781-37FA3ED8E7E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B06763-B4AD-4650-B781-37FA3ED8E7E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B06763-B4AD-4650-B781-37FA3ED8E7E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C21EAC2F-4A1C-47BB-9043-37EF09E13DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C21EAC2F-4A1C-47BB-9043-37EF09E13DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C21EAC2F-4A1C-47BB-9043-37EF09E13DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C21EAC2F-4A1C-47BB-9043-37EF09E13DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E0985FF-E29D-4BF6-AA85-37BE768BFE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0985FF-E29D-4BF6-AA85-37BE768BFE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0985FF-E29D-4BF6-AA85-37BE768BFE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0985FF-E29D-4BF6-AA85-37BE768BFE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F400897-EB17-4370-9927-77764CCAB41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F400897-EB17-4370-9927-77764CCAB41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F400897-EB17-4370-9927-77764CCAB41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F400897-EB17-4370-9927-77764CCAB41A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06199039-47F4-43C6-934B-0B857437EEC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06199039-47F4-43C6-934B-0B857437EEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06199039-47F4-43C6-934B-0B857437EEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06199039-47F4-43C6-934B-0B857437EEC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F8DFD6E-BDCA-4030-999A-92FA32ED76DD}
+	EndGlobalSection
+EndGlobal

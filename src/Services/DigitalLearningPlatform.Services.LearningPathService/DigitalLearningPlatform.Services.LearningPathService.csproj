@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>46e11511-b5e7-462f-879c-8c1c9706addb</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\DigitalLearningPlatform.BuildingBlocks.Common\DigitalLearningPlatform.BuildingBlocks.Common.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\DigitalLearningPlatform.BuildingBlocks.EventBus\DigitalLearningPlatform.BuildingBlocks.EventBus.csproj" />
+    <ProjectReference Include="..\..\BuildingBlocks\DigitalLearningPlatform.BuildingBlocks.MessageContracts\DigitalLearningPlatform.BuildingBlocks.MessageContracts.csproj" />
+  </ItemGroup>
+
+</Project>

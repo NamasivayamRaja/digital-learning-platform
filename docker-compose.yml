@@ -1,0 +1,149 @@
+services:
+  #Application Services
+  userservice:
+    image: ${DOCKER_REGISTRY-}userservice
+    container_name: digital-learning-userservice
+    build:
+      context: .
+      dockerfile: src/Services/DigitalLearningPlatform.Services.UserService/Dockerfile
+    networks:
+      - learning-network
+
+  contentservice:
+    image: ${DOCKER_REGISTRY-}contentservice
+    container_name: digital-learning-content
+    build:
+      context: .
+      dockerfile: src/Services/DigitalLearningPlatform.Services.ContentService/Dockerfile
+    networks:
+      - learning-network
+
+  assessmentservice:
+    image: ${DOCKER_REGISTRY-}assessmentservice
+    container_name: digital-learning-assessment
+    build:
+      context: .
+      dockerfile: src/Services/DigitalLearningPlatform.Services.AssessmentService/Dockerfile
+    networks:
+      - learning-network
+
+  aitutorservice:
+    image: ${DOCKER_REGISTRY-}aitutorservice
+    container_name: digital-learning-aitutor
+    build:
+      context: .
+      dockerfile: src/Services/DigitalLearningPlatform.Services.AiTutorService/Dockerfile
+    networks:
+      - learning-network
+
+  leaderboardservice:
+    image: ${DOCKER_REGISTRY-}leaderboardservice
+    container_name: digital-learning-leaderboard
+    build:
+      context: .
+      dockerfile: src/Services/DigitalLearningPlatform.Services.LeaderBoardService/Dockerfile
+    networks:
+      - learning-network
+
+  learningpathservice:
+    image: ${DOCKER_REGISTRY-}learningpathservice
+    container_name: digital-learning-learningpath
+    build:
+      context: .
+      dockerfile: src/Services/DigitalLearningPlatform.Services.LearningPathService/Dockerfile
+    networks:
+      - learning-network  
+
+  #Infrastructure services
+  #sql server
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: digital-learning-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=DEVELOPER
+    ports:
+     - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    networks:
+      - learning-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "DevPassword123!", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: digital-learning-rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"   # AMQP protocol
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - learning-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Redis
+  redis:
+    image: redis:alpine
+    container_name: digital-learning-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - learning-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    command: redis-server --appendonly yes
+
+  # Seq (logging)
+  seq:
+    image: datalust/seq:latest
+    container_name: digital-learning-seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5341:80"
+    volumes:
+      - seq-data:/data
+    networks:
+      - learning-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:80/api/info"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  learning-network:
+    name: learning-network
+    driver: bridge
+
+volumes:
+  sqlserver-data:
+    name: digital-learning-sqlserver-data
+  rabbitmq-data:
+    name: digital-learning-rabbitmq-data
+  redis-data:
+    name: digital-learning-redis-data
+  seq-data:
+    name: digital-learning-seq-data 

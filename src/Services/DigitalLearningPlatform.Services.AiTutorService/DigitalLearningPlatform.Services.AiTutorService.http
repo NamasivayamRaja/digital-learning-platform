@@ -1,0 +1,6 @@
+@DigitalLearningPlatform.Services.AiTutorService_HostAddress = http://localhost:5143
+
+GET {{DigitalLearningPlatform.Services.AiTutorService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

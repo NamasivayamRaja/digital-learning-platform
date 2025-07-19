@@ -1,0 +1,6 @@
+@DigitalLearningPlatform.Services.AssessmentService_HostAddress = http://localhost:5227
+
+GET {{DigitalLearningPlatform.Services.AssessmentService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

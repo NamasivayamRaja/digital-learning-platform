@@ -1,0 +1,71 @@
+# .NET build artifacts
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.dll
+*.exe
+*.pdb
+.vs/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio files
+.vs/
+.vscode/
+*.userprefs
+*.csproj.user
+*.vbproj.user
+*.vcxproj.user
+*.dbmdl
+*.dbproj.user
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# NuGet packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/repositories.config
+
+# Environment files
+.env
+appsettings.Development.json
+appsettings.Local.json
+*.Development.json
+*.Local.json
+
+# Docker
+.docker/data/
+docker-compose.override.yml
+
+# Test results
+TestResults/
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+
+# Other
+*.log
+logs/
+.DS_Store
+Thumbs.db
