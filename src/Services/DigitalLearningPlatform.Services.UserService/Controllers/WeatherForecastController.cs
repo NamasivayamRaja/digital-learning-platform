@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DigitalLearningPlatform.Services.UserService.Controllers
 {
+    //Test Controller for API gateway and controller will be removed in the User Feature .
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/users")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -19,6 +20,7 @@ namespace DigitalLearningPlatform.Services.UserService.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
+        [Route("GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

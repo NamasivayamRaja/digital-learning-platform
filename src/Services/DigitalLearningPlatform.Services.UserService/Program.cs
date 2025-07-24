@@ -1,5 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 
+var env = builder.Environment;
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
 builder.Services.AddControllers();
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();

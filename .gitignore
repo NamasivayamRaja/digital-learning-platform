@@ -69,3 +69,6 @@ TestResults/
 logs/
 .DS_Store
 Thumbs.db
+
+# mkcert development certs
+DevCertificates/
