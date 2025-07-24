@@ -26,5 +26,13 @@ RUN dotnet publish "./DigitalLearningPlatform.Services.UserService.csproj" -c $B
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
+
+#Certificateion update shoud be based on environment. Enhancement/Prod/E3
+#Root certifcate copied to docker container for validating the certificate the local generated certificate
+USER root
+COPY DevCertificates/rootCA.pem /usr/local/share/ca-certificates/rootCA.crt
+RUN update-ca-certificates
+USER $APP_UID
+
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "DigitalLearningPlatform.Services.UserService.dll"]

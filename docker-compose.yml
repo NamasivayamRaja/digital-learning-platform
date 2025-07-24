@@ -1,5 +1,14 @@
 services:
   #Application Services
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    container_name: digital-learning-apigateway
+    build:
+      context: .
+      dockerfile: src/Gateway/DigitalLearningPlatform.ApiGateway/Dockerfile
+    networks:
+      - learning-network
+
   userservice:
     image: ${DOCKER_REGISTRY-}userservice
     container_name: digital-learning-userservice
@@ -9,50 +18,50 @@ services:
     networks:
       - learning-network
 
-  contentservice:
-    image: ${DOCKER_REGISTRY-}contentservice
-    container_name: digital-learning-content
-    build:
-      context: .
-      dockerfile: src/Services/DigitalLearningPlatform.Services.ContentService/Dockerfile
-    networks:
-      - learning-network
+  # contentservice:
+  #   image: ${DOCKER_REGISTRY-}contentservice
+  #   container_name: digital-learning-content
+  #   build:
+  #     context: .
+  #     dockerfile: src/Services/DigitalLearningPlatform.Services.ContentService/Dockerfile
+  #   networks:
+  #     - learning-network
 
-  assessmentservice:
-    image: ${DOCKER_REGISTRY-}assessmentservice
-    container_name: digital-learning-assessment
-    build:
-      context: .
-      dockerfile: src/Services/DigitalLearningPlatform.Services.AssessmentService/Dockerfile
-    networks:
-      - learning-network
+  # assessmentservice:
+  #   image: ${DOCKER_REGISTRY-}assessmentservice
+  #   container_name: digital-learning-assessment
+  #   build:
+  #     context: .
+  #     dockerfile: src/Services/DigitalLearningPlatform.Services.AssessmentService/Dockerfile
+  #   networks:
+  #     - learning-network
 
-  aitutorservice:
-    image: ${DOCKER_REGISTRY-}aitutorservice
-    container_name: digital-learning-aitutor
-    build:
-      context: .
-      dockerfile: src/Services/DigitalLearningPlatform.Services.AiTutorService/Dockerfile
-    networks:
-      - learning-network
+  # aitutorservice:
+  #   image: ${DOCKER_REGISTRY-}aitutorservice
+  #   container_name: digital-learning-aitutor
+  #   build:
+  #     context: .
+  #     dockerfile: src/Services/DigitalLearningPlatform.Services.AiTutorService/Dockerfile
+  #   networks:
+  #     - learning-network
 
-  leaderboardservice:
-    image: ${DOCKER_REGISTRY-}leaderboardservice
-    container_name: digital-learning-leaderboard
-    build:
-      context: .
-      dockerfile: src/Services/DigitalLearningPlatform.Services.LeaderBoardService/Dockerfile
-    networks:
-      - learning-network
+  # leaderboardservice:
+  #   image: ${DOCKER_REGISTRY-}leaderboardservice
+  #   container_name: digital-learning-leaderboard
+  #   build:
+  #     context: .
+  #     dockerfile: src/Services/DigitalLearningPlatform.Services.LeaderBoardService/Dockerfile
+  #   networks:
+  #     - learning-network
 
-  learningpathservice:
-    image: ${DOCKER_REGISTRY-}learningpathservice
-    container_name: digital-learning-learningpath
-    build:
-      context: .
-      dockerfile: src/Services/DigitalLearningPlatform.Services.LearningPathService/Dockerfile
-    networks:
-      - learning-network  
+  # learningpathservice:
+  #   image: ${DOCKER_REGISTRY-}learningpathservice
+  #   container_name: digital-learning-learningpath
+  #   build:
+  #     context: .
+  #     dockerfile: src/Services/DigitalLearningPlatform.Services.LearningPathService/Dockerfile
+  #   networks:
+  #     - learning-network  
 
   #Infrastructure services
   #sql server
@@ -137,6 +146,9 @@ networks:
   learning-network:
     name: learning-network
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
 
 volumes:
   sqlserver-data:
