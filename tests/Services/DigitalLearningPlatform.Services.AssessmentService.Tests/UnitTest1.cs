@@ -1,4 +1,5 @@
-﻿namespace DigitalLearningPlatform.Services.AssessmentService.Tests
+using Xunit;﻿
+namespace DigitalLearningPlatform.Services.AssessmentService.Tests
 {
     public class UnitTest1
     {
