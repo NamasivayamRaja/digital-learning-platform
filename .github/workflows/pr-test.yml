@@ -37,7 +37,7 @@ jobs:
       run: find ./tests -name '*.csproj' -type f
     - name: Manual dotnet test run
       run: |
-        dotnet test ./tests/Services/DigitalLearningPlatform.Services.AssessmentService.Tests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj --no-build --configuration Release --collect:"XPlat Code Coverage"      
+        dotnet test ./tests/Services/DigitalLearningPlatform.Services.AssessmentService.Tests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj --no-build --configuration Release      
     - name: Run tests and collect coverage
       run: |
         find ./tests -name '*.csproj' -type f | while read proj; do
