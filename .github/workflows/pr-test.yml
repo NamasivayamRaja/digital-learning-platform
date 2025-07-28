@@ -34,7 +34,7 @@ jobs:
       run: |
        ls -l ./tests/Services/UserService/UnitTests/
        cat ./tests/Services/UserService/UnitTests/DigitalLearningPlatform.Services.UserService.UnitTests.csproj
-       dotnet test ./tests/Services/UserService/UnitTests/DigitalLearningPlatform.Services.UserService.UnitTests.csproj --no-build --configuration Release --verbosity normal  
+       dotnet test ./tests/Services/UserService/UnitTests/DigitalLearningPlatform.Services.UserService.UnitTests.csproj --configuration Release --verbosity normal  
     - name: Run tests and collect coverage
       run: |
         find ./tests -name '*.csproj' -type f | while read proj; do
