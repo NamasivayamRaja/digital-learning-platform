@@ -35,9 +35,11 @@ jobs:
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
     - name: List test projects
       run: find ./tests -name '*.csproj' -type f
-    - name: Manual dotnet test run
+    - name: Print test project and run test
       run: |
-        dotnet test ./tests/Services/DigitalLearningPlatform.Services.AssessmentService.Tests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj --no-build --configuration Release --verbosity diagnostic      
+       ls -l ./tests/Services/DigitalLearningPlatform.Services.AssessmentService.Tests/
+       cat ./tests/Services/DigitalLearningPlatform.Services.AssessmentService.Tests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj
+       dotnet test ./tests/Services/DigitalLearningPlatform.Services.AssessmentService.Tests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj --no-build --configuration Release --verbosity normal  
     - name: Run tests and collect coverage
       run: |
         find ./tests -name '*.csproj' -type f | while read proj; do
