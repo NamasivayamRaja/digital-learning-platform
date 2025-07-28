@@ -28,6 +28,8 @@ jobs:
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
     - name: List test projects
       run: find ./tests -name '*.csproj' -type f
+    - name: List discovered tests
+      run: dotnet test ./tests/Services/UserService/UnitTests/DigitalLearningPlatform.Services.UserService.UnitTests.csproj --configuration Release --list-tests
     - name: Print test project and run test
       run: |
        ls -l ./tests/Services/UserService/UnitTests/
