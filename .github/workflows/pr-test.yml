@@ -29,7 +29,8 @@ jobs:
     - name: List test projects
       run: find ./tests -name '*.csproj' -type f
     - name: List discovered tests
-      run: dotnet test ./tests/Services/UserService/UnitTests/DigitalLearningPlatform.Services.UserService.UnitTests.csproj --configuration Release --list-tests
+    
+      run: dotnet test ./tests/Services/AssessmentService/UnitTests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj --configuration Release --list-tests
     - name: Print test project and run test
       run: |
        ls -l ./tests/Services/UserService/UnitTests/
@@ -40,7 +41,6 @@ jobs:
         find ./tests -name '*.csproj' -type f | while read proj; do
           echo "Testing $proj"
           dotnet test "$proj" \
-            --no-build \
             --configuration Release \
             --collect:"XPlat Code Coverage" \
             --results-directory "$(dirname "$proj")/TestResults" \
