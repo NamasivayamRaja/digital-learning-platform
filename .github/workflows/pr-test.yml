@@ -26,21 +26,28 @@ jobs:
       run: dotnet restore ./DigitalLearningPlatform.sln
     - name: Build
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
-    - name: Tests + Coverages
+    - name: List test projects
+      run: find ./tests -name '*.csproj' -type f      
+    - name: Run tests and collect coverage
       run: |
-        for proj in $(find ./tests -name '*.csproj' -type f); do
+        find ./tests -name '*.csproj' -type f | while read proj; do
           echo "Testing $proj"
-          dotnet test "$proj" --no-build --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResult
+          dotnet test "$proj" \
+            --no-build \
+            --configuration Release \
+            --collect:"XPlat Code Coverage" \
+            --results-directory "$(dirname "$proj")/TestResults" \
+            --logger "trx;LogFileName=test-results.trx"
         done
     - name: Upload Coverage
       uses: actions/upload-artifact@v4
       with:
         name: code-coverage-reports
         path: |
-          **/TestResults/**/coverage.cobertura.xml
+          tests/**/TestResults/**/coverage.cobertura.xml
     - name: Upload Test Reports
       uses: actions/upload-artifact@v4
       with: 
         name: test-results
         path: |
-          **/TestResults/**/*.trx
+          tests/**/TestResults/**/*.trx
