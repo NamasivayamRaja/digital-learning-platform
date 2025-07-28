@@ -31,7 +31,7 @@
             return Id.GetHashCode();
         }
 
-        public static bool operator ==(EntityBase left, EntityBase right)
+        public static bool operator ==(EntityBase? left, EntityBase? right)
         {
             if(left is null && right is null) return true;
 
@@ -40,7 +40,7 @@
             return left.Equals(right);
         }
 
-        public static bool operator !=(EntityBase left, EntityBase right) { return !(left == right); }
+        public static bool operator !=(EntityBase? left, EntityBase? right) { return !(left == right); }
 
     }
 }

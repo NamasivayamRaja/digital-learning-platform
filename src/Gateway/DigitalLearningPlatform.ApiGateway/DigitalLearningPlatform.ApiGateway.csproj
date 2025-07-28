@@ -21,4 +21,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\BuildingBlocks\DigitalLearningPlatform.BuildingBlocks.Common\DigitalLearningPlatform.BuildingBlocks.Common.csproj" />
+  </ItemGroup>
+
 </Project>

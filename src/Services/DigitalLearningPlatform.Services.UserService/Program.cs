@@ -1,9 +1,33 @@
+using Microsoft.EntityFrameworkCore;
+
+using DigitalLearningPlatform.Services.UserService.Infrastructure.Data;
+using DigitalLearningPlatform.Services.UserService.Infrastructure.Seed;
+using DigitalLearningPlatform.Services.UserService.Application.Services;
+using DigitalLearningPlatform.Services.UserService.Infrastructure.Repositories.Interfaces;
+using DigitalLearningPlatform.Services.UserService.Infrastructure.Repositories;
+using DigitalLearningPlatform.Services.UserService.Configuration;
+using DigitalLearningPlatform.BuildingBlocks.Common.Extensions;
+using Serilog.Context;
+using DigitalLearningPlatform.Services.UserService.Application.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
-var env = builder.Environment;
-builder.Configuration
-    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-    .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+builder.Host.ConfigureLogging("UserService");
+
+builder.Services.AddDbContext<UserDbContext>(
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
+
+builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection("Jwt"));
+
+builder.Services.AddJwtAuthentication(builder.Configuration, builder.Environment.EnvironmentName);
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddSingleton<IJwtService, JwtService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 builder.Services.AddControllers();
 // Add services to the container.
@@ -21,6 +45,20 @@ builder.Services.AddOpenApi(options =>
 
 var app = builder.Build();
 
+app.Use(async (context, next) =>
+{
+    var correlationId = context.Request.Headers["X-Correlation-ID"];
+
+    if(!string.IsNullOrWhiteSpace(correlationId))
+    {
+        LogContext.PushProperty("CorrelationId", correlationId);
+    }
+
+    await next();
+});
+
+app.UseGlobalExceptionHandler();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -37,4 +75,14 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Seeding should be placed in CI/CD pipeline. Failed the integration test runs. Keep it here for reference
+//using (var scope = app.Services.CreateScope())
+//{
+//    var db = scope.ServiceProvider.GetRequiredService<UserDbContext>();
+//    db.Database.Migrate();
+//    await RoleSeeder.SeedRoleAsync(db);
+//}
+
 app.Run();
+
+public partial class Program { } // Added for Integration Test
