@@ -28,24 +28,8 @@ jobs:
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
     - name: List test projects
       run: find ./tests -name '*.csproj' -type f
-    - name: List discovered tests
-    
-      run: dotnet test ./tests/Services/AssessmentService/UnitTests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj --configuration Release --list-tests
-    - name: Print test project and run test
-      run: |
-       ls -l ./tests/Services/UserService/UnitTests/
-       cat ./tests/Services/UserService/UnitTests/DigitalLearningPlatform.Services.UserService.UnitTests.csproj
-       dotnet test ./tests/Services/UserService/UnitTests/DigitalLearningPlatform.Services.UserService.UnitTests.csproj --configuration Release --verbosity normal  
-    - name: Run tests and collect coverage
-      run: |
-        find ./tests -name '*.csproj' -type f | while read proj; do
-          echo "Testing $proj"
-          dotnet test "$proj" \
-            --configuration Release \
-            --collect:"XPlat Code Coverage" \
-            --results-directory "$(dirname "$proj")/TestResults" \
-            --logger "trx;LogFileName=test-results.trx"
-        done
+    - name: List discovered tests    
+      run: dotnet test .tests/Services/UserService/IntegrationTests/DigitalLearningPlatform.Services.UserService.IntegrationTests.csproj --configuration Release --list-tests --diag testlog.txt
     - name: Upload Coverage
       uses: actions/upload-artifact@v4
       with:
