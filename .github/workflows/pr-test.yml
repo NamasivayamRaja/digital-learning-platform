@@ -27,7 +27,10 @@ jobs:
     - name: Build
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
     - name: List test projects
-      run: find ./tests -name '*.csproj' -type f      
+      run: find ./tests -name '*.csproj' -type f
+    - name: Manual dotnet test run
+      run: |
+        dotnet test ./tests/Services/DigitalLearningPlatform.Services.AssessmentService.Tests/DigitalLearningPlatform.Services.AssessmentService.Tests.csproj --no-build --configuration Release --collect:"XPlat Code Coverage"      
     - name: Run tests and collect coverage
       run: |
         find ./tests -name '*.csproj' -type f | while read proj; do
