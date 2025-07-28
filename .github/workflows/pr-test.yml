@@ -28,7 +28,7 @@ jobs:
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
     - name: Tests + Coverages
       run: |
-        for proj in $(find ./tests -name '*.csproj'); do
+        for proj in $(find ./tests -name '*.csproj' -type f); do
           echo "Testing $proj"
           dotnet test "$proj" --no-build --configuration Release --collect:"XPlat Code Coverage" --results-directory TestResult
         done
