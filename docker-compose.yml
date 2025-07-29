@@ -17,6 +17,9 @@ services:
       dockerfile: src/Services/DigitalLearningPlatform.Services.UserService/Dockerfile
     networks:
       - learning-network
+    depends_on:
+      sqlserver:
+        condition: service_healthy 
 
   # contentservice:
   #   image: ${DOCKER_REGISTRY-}contentservice
@@ -79,10 +82,10 @@ services:
       - learning-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "DevPassword123!", "-Q", "SELECT 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+     test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", Password@1, "-Q", "SELECT 1"]
+     interval: 10s
+     timeout: 5s
+     retries: 10
 
   # RabbitMQ
   rabbitmq:

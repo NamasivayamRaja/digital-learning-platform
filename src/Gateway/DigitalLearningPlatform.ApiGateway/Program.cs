@@ -1,3 +1,4 @@
+using DigitalLearningPlatform.BuildingBlocks.Common.Extensions;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -5,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Add ocelot configuration
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+
+builder.Services.AddJwtAuthentication(builder.Configuration, builder.Environment.EnvironmentName);
 
 builder.Services.AddOcelot(builder.Configuration);
 
@@ -24,7 +27,26 @@ builder.Services.AddOpenApi(options =>
 
 var app = builder.Build();
 
+app.Use(async(context, next) =>
+{
+    string correlationId = context.Request.Headers["X-Correlation-ID"].FirstOrDefault() ?? Guid.NewGuid().ToString();
+
+    // add to current request
+    context.TraceIdentifier = correlationId;
+    context.Request.Headers["X-Correlation-ID"] = correlationId;
+
+    // ensure it's passed to downstream services
+    context.Items["DownstreamRequestHeaders"] = new Dictionary<string, string>()
+    {
+        ["X-Correlation-ID"] = correlationId,
+    };
+
+    await next();
+});
+
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 await app.UseOcelot();
 

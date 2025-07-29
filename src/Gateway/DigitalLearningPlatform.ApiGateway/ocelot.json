@@ -1,16 +1,36 @@
 {
   "Routes": [
     {
-      "UpstreamHttpMethod": [ "GET" ],
-      "UpstreamPathTemplate": "/users/{everything}",
-      "DownstreamPathTemplate": "/api/users/{everything}",
+      "UpstreamHttpMethod": ["POST"],
+      "UpstreamPathTemplate": "/account/{everything}",
+      "DownstreamPathTemplate": "/api/auth/{everything}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "digital-learning-userservice",
           "Port": 8081
         }
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": [],
+        "AuthenticationProviderKey": ""
+      }
+    },
+    {
+      "UpstreamHttpMethod": [ "GET", "PUT" ],
+      "UpstreamPathTemplate": "/profile/{everything}",
+      "DownstreamPathTemplate": "/api/profile/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "digital-learning-userservice",
+          "Port": 8081
+        }
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": [],
+        "AuthenticationProviderKey": "Bearer"
+      }
     }
   ],
   "GlobalConfiguration": {

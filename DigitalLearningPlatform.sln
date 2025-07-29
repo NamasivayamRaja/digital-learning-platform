@@ -32,17 +32,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LearningPathService", "src\Services\DigitalLearningPlatform.Services.LearningPathService\DigitalLearningPlatform.Services.LearningPathService.csproj", "{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.UserService.Tests", "tests\Services\DigitalLearningPlatform.Services.UserService.Tests\DigitalLearningPlatform.Services.UserService.Tests.csproj", "{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.UserService.UnitTests", "tests\Services\UserService\UnitTests\DigitalLearningPlatform.Services.UserService.UnitTests.csproj", "{AA57CB66-8C44-B7BF-A675-2097CF8D2C5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.ContentService.Tests", "tests\Services\DigitalLearningPlatform.Services.ContentService.Tests\DigitalLearningPlatform.Services.ContentService.Tests.csproj", "{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.UserService.IntegrationTests", "tests\Services\UserService\IntegrationTests\DigitalLearningPlatform.Services.UserService.IntegrationTests.csproj", "{36BBDCC4-8F5C-FCC7-10CE-F345EDFDEF30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AssessmentService.Tests", "tests\Services\DigitalLearningPlatform.Services.AssessmentService.Tests\DigitalLearningPlatform.Services.AssessmentService.Tests.csproj", "{8AB35784-6F5E-48BC-A351-9968B28700D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AiTutorService.Tests", "tests\Services\AiTutorService\UnitTests\DigitalLearningPlatform.Services.AiTutorService.Tests.csproj", "{788BB76E-696B-9054-52CE-F669663385D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LeaderBoardService.Tests", "tests\Services\DigitalLearningPlatform.Services.LeaderboardService.Tests\DigitalLearningPlatform.Services.LeaderBoardService.Tests.csproj", "{3F400897-EB17-4370-9927-77764CCAB41A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AssessmentService.Tests", "tests\Services\AssessmentService\UnitTests\DigitalLearningPlatform.Services.AssessmentService.Tests.csproj", "{EE4057EA-5FD2-C6FA-67E9-A8144B80E78C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AiTutorService.Tests", "tests\Services\DigitalLearningPlatform.Services.AiTutorService.Tests\DigitalLearningPlatform.Services.AiTutorService.Tests.csproj", "{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.ContentService.Tests", "tests\Services\ContentService\UnitTests\DigitalLearningPlatform.Services.ContentService.Tests.csproj", "{840F1605-3BC7-853D-3A63-361972A54058}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LearningPathService.Tests", "tests\Services\DigitalLearningPlatform.Services.LearningPathService.Tests\DigitalLearningPlatform.Services.LearningPathService.Tests.csproj", "{06199039-47F4-43C6-934B-0B857437EEC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LeaderBoardService.Tests", "tests\Services\LeaderboardService\UnitTests\DigitalLearningPlatform.Services.LeaderBoardService.Tests.csproj", "{AF5B7D0B-6844-8A16-B692-404F0E6DFD24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LearningPathService.Tests", "tests\Services\LearningPathService\UnitTests\DigitalLearningPlatform.Services.LearningPathService.Tests.csproj", "{B90BF802-5455-D5E8-79A7-77D7C14955B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,30 +96,34 @@ Global
 		{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C28B6173-8F2D-4ADA-A7C5-6FFCEB5D52E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD86CF69-6F2F-4866-8CDA-A4DF2AF4B701}.Release|Any CPU.Build.0 = Release|Any CPU
-		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{630E7BBC-99EB-4B8C-B9AF-34832E4B5C45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AB35784-6F5E-48BC-A351-9968B28700D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F400897-EB17-4370-9927-77764CCAB41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F400897-EB17-4370-9927-77764CCAB41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F400897-EB17-4370-9927-77764CCAB41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F400897-EB17-4370-9927-77764CCAB41A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E6F3344-CB37-4D7E-A8C3-A8F3123E5913}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06199039-47F4-43C6-934B-0B857437EEC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06199039-47F4-43C6-934B-0B857437EEC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06199039-47F4-43C6-934B-0B857437EEC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06199039-47F4-43C6-934B-0B857437EEC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA57CB66-8C44-B7BF-A675-2097CF8D2C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA57CB66-8C44-B7BF-A675-2097CF8D2C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA57CB66-8C44-B7BF-A675-2097CF8D2C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA57CB66-8C44-B7BF-A675-2097CF8D2C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36BBDCC4-8F5C-FCC7-10CE-F345EDFDEF30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BBDCC4-8F5C-FCC7-10CE-F345EDFDEF30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BBDCC4-8F5C-FCC7-10CE-F345EDFDEF30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BBDCC4-8F5C-FCC7-10CE-F345EDFDEF30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{788BB76E-696B-9054-52CE-F669663385D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{788BB76E-696B-9054-52CE-F669663385D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{788BB76E-696B-9054-52CE-F669663385D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{788BB76E-696B-9054-52CE-F669663385D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE4057EA-5FD2-C6FA-67E9-A8144B80E78C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE4057EA-5FD2-C6FA-67E9-A8144B80E78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE4057EA-5FD2-C6FA-67E9-A8144B80E78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE4057EA-5FD2-C6FA-67E9-A8144B80E78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{840F1605-3BC7-853D-3A63-361972A54058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840F1605-3BC7-853D-3A63-361972A54058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840F1605-3BC7-853D-3A63-361972A54058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840F1605-3BC7-853D-3A63-361972A54058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5B7D0B-6844-8A16-B692-404F0E6DFD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5B7D0B-6844-8A16-B692-404F0E6DFD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5B7D0B-6844-8A16-B692-404F0E6DFD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5B7D0B-6844-8A16-B692-404F0E6DFD24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B90BF802-5455-D5E8-79A7-77D7C14955B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90BF802-5455-D5E8-79A7-77D7C14955B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90BF802-5455-D5E8-79A7-77D7C14955B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90BF802-5455-D5E8-79A7-77D7C14955B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

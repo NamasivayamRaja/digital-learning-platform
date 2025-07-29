@@ -1,0 +1,53 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      Jwt_SecretKey: ${{secrets.Jwt_SecretKey}}
+      ConnectionStrings__DefaultConnection: "Fake_Connection_For_Test"
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          9.0.x
+          8.0.x
+    - name: Restore dependencies
+      run: dotnet restore ./DigitalLearningPlatform.sln
+    - name: Build
+      run: dotnet build ./DigitalLearningPlatform.sln --no-restore
+    - name: Run tests and collect coverage
+      run: |
+        find ./tests -name '*.csproj' -type f | while read proj; do
+          echo "Testing $proj"
+          dotnet test "$proj" \
+            --configuration Release \
+            --collect:"XPlat Code Coverage" \
+            --results-directory "$(dirname "$proj")/TestResults" \
+            --logger "trx;LogFileName=test-results.trx"
+        done      
+    - name: Upload Coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-coverage-reports
+        path: |
+          tests/**/TestResults/**/coverage.cobertura.xml
+    - name: Upload Test Reports
+      uses: actions/upload-artifact@v4
+      with: 
+        name: test-results
+        path: |
+          tests/**/TestResults/**/*.trx
