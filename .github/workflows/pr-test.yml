@@ -30,10 +30,7 @@ jobs:
     - name: Build
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
     - name: Integration Test Analysis
-      run: dotnet test ./tests/Services/UserService/IntegrationTests/UserService.IntegrationTests.csproj \
-       --configuration Release \
-       --filter "FullyQualifiedName~DigitalLearningPlatform.Services.UserService.IntegrationTests.Controllers.AuthControllerIntegrationTests.Login_WithInvalidModel_ReturnsBadRequest" \
-       --logger "console;verbosity=detailed"
+      run: dotnet test ./tests/Services/UserService/IntegrationTests/UserService.IntegrationTests.csproj --configuration Release --filter "FullyQualifiedName~DigitalLearningPlatform.Services.UserService.IntegrationTests.Controllers.AuthControllerIntegrationTests.Login_WithInvalidModel_ReturnsBadRequest" --logger "console;verbosity=detailed"
     - name: Run tests and collect coverage
       run: |
         find ./tests -name '*.csproj' -type f | while read proj; do
