@@ -8,22 +8,30 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data.Common;
-using System.Linq;
 
 public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
-    private DbConnection _connection;
+    private DbConnection? _connection;
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        builder.ConfigureAppConfiguration((context, config) =>
+
+        builder.ConfigureAppConfiguration((context, configBuilder) =>
         {
-            config.AddInMemoryCollection(new Dictionary<string, string>
+            var jwtSecret = Environment.GetEnvironmentVariable("Jwt_SecretKey") ?? "LONGSKEYWILLHELPUSTOAVOIDERRORJWTAUTHENTICATIONISSUESDEBUGREPEAT98765!@#$%";
+
+            configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
             {
-                { "Jwt_SecretKey", Environment.GetEnvironmentVariable("Jwt_SecretKey") ?? "FakeKeyForTests" },
-                { "ConnectionStrings:DefaultConnection", Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ?? "FakeDb" }
+                { "Jwt:SecretKey", jwtSecret },
+                { "Jwt:Issuer", "TestIssuer" },
+                { "Jwt:Audience", "TestAudience" },
+                { "Jwt:Authority", "https://test-authority.local" }, // Optional, depending on your validation
+                { "ConnectionStrings:DefaultConnection", "FakeDb" }
             });
+            Console.WriteLine($"JWT Config => Secret: {jwtSecret}, Issuer: TestIssuer, Audience: TestAudience");
         });
+
+        Console.WriteLine($"Environment: {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}");
 
         builder.ConfigureTestServices(services =>
         {
