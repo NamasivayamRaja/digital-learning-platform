@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      Jwt_SecretKey: ${{secrets.Jwt_SecretKey}}
+      ConnectionStrings__DefaultConnection: "Fake_Connection_For_Test"
 
     steps:
     - uses: actions/checkout@v4
@@ -26,19 +29,22 @@ jobs:
       run: dotnet restore ./DigitalLearningPlatform.sln
     - name: Build
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
-    - name: List test projects
-      run: find ./tests -name '*.csproj' -type f      
+    - name: Integration Test Analysis
+      run: |
+       dotnet test ./tests/Services/UserService/IntegrationTests/DigitalLearningPlatform.Services.UserService.IntegrationTests.csproj \
+       --configuration Release \
+       --filter "FullyQualifiedName~DigitalLearningPlatform.Services.UserService.IntegrationTests.Controllers.AuthControllerIntegrationTests.Login_WithInvalidModel_ReturnsBadRequest" \
+       --logger "console;verbosity=detailed"
     - name: Run tests and collect coverage
       run: |
         find ./tests -name '*.csproj' -type f | while read proj; do
           echo "Testing $proj"
           dotnet test "$proj" \
-            --no-build \
             --configuration Release \
             --collect:"XPlat Code Coverage" \
             --results-directory "$(dirname "$proj")/TestResults" \
             --logger "trx;LogFileName=test-results.trx"
-        done
+        done      
     - name: Upload Coverage
       uses: actions/upload-artifact@v4
       with:
