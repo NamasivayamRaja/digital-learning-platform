@@ -38,16 +38,6 @@ jobs:
             --collect:"XPlat Code Coverage" \
             --results-directory "$(dirname "$proj")/TestResults" \
             --logger "trx;LogFileName=test-results.trx"
-        done  
-    - name: Run tests and collect coverage
-      run: |
-        find ./tests -name '*.csproj' -type f | while read proj; do
-          echo "Testing $proj"
-          dotnet test "$proj" \
-            --configuration Release \
-            --collect:"XPlat Code Coverage" \
-            --results-directory "$(dirname "$proj")/TestResults" \
-            --logger "trx;LogFileName=test-results.trx"
         done      
     - name: Upload Coverage
       uses: actions/upload-artifact@v4
