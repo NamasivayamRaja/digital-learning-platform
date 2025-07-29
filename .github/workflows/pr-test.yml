@@ -29,12 +29,16 @@ jobs:
       run: dotnet restore ./DigitalLearningPlatform.sln
     - name: Build
       run: dotnet build ./DigitalLearningPlatform.sln --no-restore
-    - name: Integration Test Analysis
+    - name: Run tests and collect coverage
       run: |
-       dotnet test ./tests/Services/UserService/IntegrationTests/DigitalLearningPlatform.Services.UserService.IntegrationTests.csproj \
-       --configuration Release \
-       --filter "FullyQualifiedName~DigitalLearningPlatform.Services.UserService.IntegrationTests.Controllers.AuthControllerIntegrationTests.Login_WithInvalidModel_ReturnsBadRequest" \
-       --logger "console;verbosity=detailed"
+        find ./tests -name '*.csproj' -type f | while read proj; do
+          echo "Testing $proj"
+          dotnet test "$proj" \
+            --configuration Release \
+            --collect:"XPlat Code Coverage" \
+            --results-directory "$(dirname "$proj")/TestResults" \
+            --logger "trx;LogFileName=test-results.trx"
+        done  
     - name: Run tests and collect coverage
       run: |
         find ./tests -name '*.csproj' -type f | while read proj; do
