@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      Jwt_SecretKey: ${{secrets.Jwt_SecretKey}}
+      ConnectionStrings__DefaultConnection: "Fake_Connection_For_Test"
 
     steps:
     - uses: actions/checkout@v4
