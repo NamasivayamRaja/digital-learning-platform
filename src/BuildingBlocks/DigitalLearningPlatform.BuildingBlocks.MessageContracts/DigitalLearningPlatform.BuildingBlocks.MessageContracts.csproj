@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalLearningPlatform.BuildingBlocks.EventBus\DigitalLearningPlatform.BuildingBlocks.EventBus.csproj" />
+  </ItemGroup>
+
 </Project>

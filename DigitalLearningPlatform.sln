@@ -40,11 +40,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.AssessmentService.Tests", "tests\Services\AssessmentService\UnitTests\DigitalLearningPlatform.Services.AssessmentService.Tests.csproj", "{EE4057EA-5FD2-C6FA-67E9-A8144B80E78C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.ContentService.Tests", "tests\Services\ContentService\UnitTests\DigitalLearningPlatform.Services.ContentService.Tests.csproj", "{840F1605-3BC7-853D-3A63-361972A54058}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.ContentService.UnitTests", "tests\Services\ContentService\UnitTests\DigitalLearningPlatform.Services.ContentService.UnitTests.csproj", "{840F1605-3BC7-853D-3A63-361972A54058}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LeaderBoardService.Tests", "tests\Services\LeaderboardService\UnitTests\DigitalLearningPlatform.Services.LeaderBoardService.Tests.csproj", "{AF5B7D0B-6844-8A16-B692-404F0E6DFD24}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.LearningPathService.Tests", "tests\Services\LearningPathService\UnitTests\DigitalLearningPlatform.Services.LearningPathService.Tests.csproj", "{B90BF802-5455-D5E8-79A7-77D7C14955B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLearningPlatform.Services.ContentService.IntegrationTests", "tests\Services\ContentService\IntegrationTests\DigitalLearningPlatform.Services.ContentService.IntegrationTests.csproj", "{363102D4-236B-93C8-A201-2336E2B5B355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,6 +126,10 @@ Global
 		{B90BF802-5455-D5E8-79A7-77D7C14955B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B90BF802-5455-D5E8-79A7-77D7C14955B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B90BF802-5455-D5E8-79A7-77D7C14955B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{363102D4-236B-93C8-A201-2336E2B5B355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{363102D4-236B-93C8-A201-2336E2B5B355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{363102D4-236B-93C8-A201-2336E2B5B355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{363102D4-236B-93C8-A201-2336E2B5B355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

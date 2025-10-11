@@ -21,7 +21,8 @@ namespace DigitalLearningPlatform.BuildingBlocks.EventBus.Subscriptions
         bool HasSubscriptionsForEvent<T>() where T : IntegrationEvent;
 
         Type? GetEventTypeByName(string eventName);
-        void clear();
+        void Clear();
+        bool IsEmpty { get; }
 
         IEnumerable<SubscriptionInfo> GetHandlersForEvent(string eventName);
         IEnumerable<SubscriptionInfo> GetHandlersForEvent<T>() where T : IntegrationEvent;

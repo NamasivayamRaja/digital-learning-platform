@@ -105,6 +105,9 @@ namespace DigitalLearningPlatform.Services.UserService.Migrations
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
+                            b1.Property<string>("Overview")
+                                .HasColumnType("nvarchar(max)");
+
                             b1.HasKey("UserId");
 
                             b1.ToTable("Users");

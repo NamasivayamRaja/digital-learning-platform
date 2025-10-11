@@ -1,21 +1,18 @@
 ﻿using DigitalLearningPlatform.BuildingBlocks.EventBus.Events;
+using System.Threading.Tasks;
 
 namespace DigitalLearningPlatform.BuildingBlocks.EventBus.Abstractions
 {
-    // In IEventBus.cs - the core Observer pattern implementation
     public interface IEventBus
     {
-        void Publish(IntegrationEvent @event);
+        Task PublishAsync(IntegrationEvent @event);
 
-        void Subscribe<T,TH>() where T : IntegrationEvent
+        Task SubscribeAsync<T, TH>()
+            where T : IntegrationEvent
             where TH : IIntegrationEventHandler<T>;
 
-        void SubscribeDynamic<TH>(string eventName) where TH : IDynamicIntegrationEventHandler;
-
-        void Unsubscribe<T, TH>() where T : IntegrationEvent
+        void Unsubscribe<T, TH>()
+            where T : IntegrationEvent
             where TH : IIntegrationEventHandler<T>;
-
-        void UnsubscribeDynamic<TH>(string eventName) where TH : IDynamicIntegrationEventHandler;
-
     }
 }

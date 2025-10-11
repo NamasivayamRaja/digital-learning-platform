@@ -21,7 +21,7 @@ namespace DigitalLearningPlatform.BuildingBlocks.Common.Middleware
         {
             try
             {
-                await _next(context);
+                    await _next(context);
             }
             catch (DomainException ex)
             {

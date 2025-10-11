@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <CONTENTSERVICE_CONNECTIONSTRING>Host=localhost;Port=5433;Database=digital_learning_content_test;Username=dl_user;Password=dl_pass</CONTENTSERVICE_CONNECTIONSTRING>
+      <USERSERVICE_CONNECTIONSTRING>Server=localhost,1434;Database=master;User ID=sa;Password=Password@1;TrustServerCertificate=True;</USERSERVICE_CONNECTIONSTRING>
+    </EnvironmentVariables>
+  </RunConfiguration>
+</RunSettings>

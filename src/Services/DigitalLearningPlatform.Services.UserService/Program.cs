@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-
 using DigitalLearningPlatform.Services.UserService.Infrastructure.Data;
-using DigitalLearningPlatform.Services.UserService.Infrastructure.Seed;
 using DigitalLearningPlatform.Services.UserService.Application.Services;
 using DigitalLearningPlatform.Services.UserService.Infrastructure.Repositories.Interfaces;
 using DigitalLearningPlatform.Services.UserService.Infrastructure.Repositories;
 using DigitalLearningPlatform.Services.UserService.Configuration;
 using DigitalLearningPlatform.BuildingBlocks.Common.Extensions;
+using DigitalLearningPlatform.BuildingBlocks.EventBus.Extensions;
 using Serilog.Context;
 using DigitalLearningPlatform.Services.UserService.Application.Interfaces;
 
@@ -28,6 +27,10 @@ builder.Services.AddScoped<IProfileService, ProfileService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+
+// Configure Event Bus with RabbitMQ
+var rabbitMQConnectionString = builder.Configuration.GetConnectionString("RabbitMQ") ?? "amqp://guest:guest@rabbitmq:5672/";
+builder.Services.AddEventBusRabbitMQ(rabbitMQConnectionString, "UserService");
 
 builder.Services.AddControllers();
 // Add services to the container.
@@ -74,6 +77,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHealthChecks("/health");
 
 // Seeding should be placed in CI/CD pipeline. Failed the integration test runs. Keep it here for reference
 //using (var scope = app.Services.CreateScope())

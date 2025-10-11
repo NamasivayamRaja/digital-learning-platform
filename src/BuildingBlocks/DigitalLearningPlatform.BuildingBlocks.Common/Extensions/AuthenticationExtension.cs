@@ -38,6 +38,10 @@ namespace DigitalLearningPlatform.BuildingBlocks.Common.Extensions
                         ClockSkew = TimeSpan.Zero                        
                     };
                 });
+
+            services.AddAuthorizationBuilder()
+                .AddPolicy("Instructor", policy => policy.RequireRole("Instructor"));
+
             return services;
         }
     }

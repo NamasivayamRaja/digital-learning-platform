@@ -1,3 +1,4 @@
+using DigitalLearningPlatform.ApiGateway.Aggregator;
 using DigitalLearningPlatform.BuildingBlocks.Common.Extensions;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -9,7 +10,8 @@ builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange
 
 builder.Services.AddJwtAuthentication(builder.Configuration, builder.Environment.EnvironmentName);
 
-builder.Services.AddOcelot(builder.Configuration);
+builder.Services.AddOcelot(builder.Configuration)
+    .AddSingletonDefinedAggregator<CourseSectionFileInitiateAndCreateAggregator>();
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();

@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Xunit;
-using Moq;
+﻿using Moq;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using DigitalLearningPlatform.Services.UserService.Controllers;

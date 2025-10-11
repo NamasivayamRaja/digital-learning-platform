@@ -3,6 +3,8 @@ using DigitalLearningPlatform.BuildingBlocks.EventBus.Events;
 
 namespace DigitalLearningPlatform.BuildingBlocks.EventBus.Subscriptions
 {
+    // For Learning purpose created the In Memory storage for Subscription
+    // Dynamic subscription is not implemented
     public class InMemoryEventBusSubscriptionManager : IEventBusSubscriptionManager
     {
         private readonly Dictionary<string, List<SubscriptionInfo>> _handlers;
@@ -31,11 +33,13 @@ namespace DigitalLearningPlatform.BuildingBlocks.EventBus.Subscriptions
             _eventTypes.Add(typeof(T));
         }
 
-        public void clear()
+        public void Clear()
         {
             _handlers.Clear();
             _eventTypes.Clear();
         }
+
+        public bool IsEmpty => !_handlers.Any();
 
         public IEnumerable<SubscriptionInfo> GetHandlersForEvent(string eventName) => 
             _handlers.GetValueOrDefault(eventName, new List<SubscriptionInfo>());
@@ -89,7 +93,7 @@ namespace DigitalLearningPlatform.BuildingBlocks.EventBus.Subscriptions
 
         private void DoAddSubscriptions(Type handlerType, string eventName, bool isDynamic)
         {
-            if (HasSubscriptionsForEvent(eventName))
+            if (!HasSubscriptionsForEvent(eventName))
             {
                 _handlers.Add(eventName, new List<SubscriptionInfo>());
             }

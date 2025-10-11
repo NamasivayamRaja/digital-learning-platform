@@ -1,0 +1,67 @@
+name: Integration Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-integration-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      sqlserver-test:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: Password@1
+        ports:
+          - 1433:1433
+
+      postgres-test:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: dl_user
+          POSTGRES_PASSWORD: dl_pass
+          POSTGRES_DB: digital_learning_content_test
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Wait for databases to be ready
+        run: |
+          echo "Waiting for SQL Server to be ready..."
+          until /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Password@1" -Q "SELECT 1" &> /dev/null; do
+            echo "SQL Server is unavailable - sleeping"
+            sleep 1
+          done
+          echo "SQL Server is up and running"
+
+          echo "Waiting for PostgreSQL to be ready..."
+          until pg_isready -h localhost -p 5432 -U dl_user -d digital_learning_content_test; do
+            echo "PostgreSQL is unavailable - sleeping"
+            sleep 1
+          done
+          echo "PostgreSQL is up and running"
+        shell: bash
+
+      - name: Run ContentService Integration Tests
+        run: dotnet test --filter "FullyQualifiedName~ContentService"
+        env:
+          CONTENTSERVICE_CONNECTIONSTRING: "Host=localhost;Port=5432;Database=digital_learning_content_test;Username=dl_user;Password=dl_pass"
+
+      - name: Run UserService Integration Tests
+        run: dotnet test --filter "FullyQualifiedName~UserService"
+        env:
+          USERSERVICE_CONNECTIONSTRING: "Server=localhost;Database=master;User ID=sa;Password=Password@1;TrustServerCertificate=True;"

@@ -6,10 +6,11 @@ using System.Net.Http.Json;
 using Xunit;
 namespace DigitalLearningPlatform.Services.UserService.IntegrationTests.Controllers
 {
-    public class ProfileControllerIntegrationTests : IClassFixture<CustomWebApplicationFactory>
+    [Collection("SharedDbTests")]
+    public class ProfileControllerIntegrationTests : IClassFixture<UserServiceWebApplicationFactory>
     {
         private readonly HttpClient _client;
-        public ProfileControllerIntegrationTests(CustomWebApplicationFactory factory)
+        public ProfileControllerIntegrationTests(UserServiceWebApplicationFactory factory)
         {
             _client = factory.CreateClient();
         }
@@ -37,7 +38,7 @@ namespace DigitalLearningPlatform.Services.UserService.IntegrationTests.Controll
             // Arrange
             var registerDto = new RegisterDto
             {
-                Email = "profileinttest@example.com",
+                Email = $"user_{Guid.NewGuid()}@example.com",
                 FirstName = "IntProfile",
                 LastName = "Tester",
                 Password = "StrongP@ssword!78"
@@ -60,7 +61,7 @@ namespace DigitalLearningPlatform.Services.UserService.IntegrationTests.Controll
             // Arrange
             var registerDto = new RegisterDto
             {
-                Email = "profileupdateinttest@example.com",
+                Email = $"update_user_{Guid.NewGuid()}@example.com",
                 FirstName = "ToBeUpdated",
                 LastName = "User",
                 Password = "StrongP@ssword!88"

@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "UpstreamHttpMethod": ["POST"],
+      "UpstreamHttpMethod": [ "POST" ],
       "UpstreamPathTemplate": "/account/{everything}",
       "DownstreamPathTemplate": "/api/auth/{everything}",
       "DownstreamScheme": "https",
@@ -25,6 +25,86 @@
         {
           "Host": "digital-learning-userservice",
           "Port": 8081
+        }
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": [],
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST" ],
+      "UpstreamPathTemplate": "/course/{everything}",
+      "DownstreamPathTemplate": "/api/course/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "digital-learning-content",
+          "Port": 8083
+        }
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": [],
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "UpstreamHttpMethod": [ "GET", "PUT", "POST" ],
+      "UpstreamPathTemplate": "/sections/{everything}",
+      "DownstreamPathTemplate": "/api/sections/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "digital-learning-content",
+          "Port": 8083
+        }
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": [],
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "UpstreamHttpMethod": [ "POST" ],
+      "UpstreamPathTemplate": "/sections/file-uploads/{everything}",
+      "DownstreamPathTemplate": "/api/file-uploads/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "digital-learning-content",
+          "Port": 8083
+        }
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": [],
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "UpstreamHttpMethod": [ "GET" ],
+      "UpstreamPathTemplate": "/courses/content/{everything}",
+      "DownstreamPathTemplate": "/api/contentquery/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "digital-learning-content",
+          "Port": 8083
+        }
+      ],
+      "AuthenticationOptions": {
+        "AllowedScopes": [],
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "UpstreamHttpMethod": [ "POST" ],
+      "UpstreamPathTemplate": "/courses/sections/file-uploads/{everything}",
+      "DownstreamPathTemplate": "/api/section-uploads/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "digital-learning-content",
+          "Port": 8083
         }
       ],
       "AuthenticationOptions": {
